@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>АНИМАЦИЯ</title>
+	<style type="text/css" media="screen">
+		div {
+			width: 100px;
+			height:100px;
+			border: 1px solid #000;
+			background-color: red;
+			position: relative;
+			animation: myfirst 5s linear 10 alternate;
+			
+		}
+		
+		@keyframes myfirst {
+			0% {background-color: red; left: 0; top:0; }
+		   25% {background-color: green; left: 200px; top:200px; transform: scale(1.5);}
+		   50% {background-color: yellow; left: 0; top:400px;}
+		   75% {background-color: pink; left: 200px; top:400px;}
+		  100% {background-color: blue; left: 400; top:400;}
+			
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
+
+
+
+        

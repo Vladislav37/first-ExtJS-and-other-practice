@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas</title>
+</head>
+<body>
+	
+	<canvas id="canvas" width="1100" height="600" >
+		Ваш браузер не поддерживает canvas!	
+	</canvas> 
+	 
+		<script type="text/javascript" charset="utf-8">
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			var ctx2 = canvas.getContext("2d");
+			var w = canvas.width;
+			var h = canvas.height;
+			
+			
+			var cx = w/2;
+			var cy = h/2;
+			var r = 150;
+			
+			var angle = 0;
+			var rad = angle*Math.PI/180;
+			var speed = 5;
+			var star = new Image();
+			var circle = new Image();
+			var star = {x: cx+r*Math.cos(rad), y: cy+r*Math.sin(rad), rad: rad, rotate: 0, dx: 0, dy: 0, drotate: 0}
+			
+			var circle ={x: cx+r*Math.cos(rad), y: cy+r*Math.sin(rad), rad: rad, rotate: 0, dx: 0, dy: 0, drotate: 0}  
+			
+			//circle = ctx.getImageData(0, 0, 30, 30);
+			
+			function init() {
+				setInterval(draw, 10);
+				
+			}
+			
+			function drawStar() {
+				ctx.beginPath();
+				ctx.moveTo(0, -50);
+				ctx.lineTo(10, -10);
+				ctx.lineTo(50, 0);
+				ctx.lineTo(10, 10);
+				ctx.lineTo(0, 50);
+				ctx.lineTo(-10, 10);
+				ctx.lineTo(-50, 0);
+				ctx.lineTo(-10, -10);
+				ctx.closePath();
+					
+				ctx.lineWidth = 5;
+				ctx.lineJoin = 'miter'; 
+				ctx.miterLimit = 5; 
+				ctx.stroke();
+				ctx.fillStyle = 'hsl(180, 50%, 50%)';
+				ctx.fill();
+				
+				//star = ctx.getImageData(0, 0, 30, 30);
+				//ctx.putImageData(0, 0, 0);
+				
+			}
+			
+			function drawCircle() {
+				ctx2.beginPath();
+				ctx2.arc(0, 0, 10, 0, 2*Math.PI, false);
+				ctx2.stroke(); // создание круга
+				ctx2.closePath();
+				ctx2.fillStyle = "rgb(222, 103, 0)";
+				ctx2.fill();
+				ctx2.beginPath();
+				ctx2.arc(0, 200, 10, 0, 2*Math.PI, false);
+				ctx2.stroke(); // создание круга
+				ctx2.closePath();
+				ctx2.fillStyle = "rgb(222, 103, 0)";
+				ctx2.fill();
+				
+			}
+			/*
+			for (i = 0; i<=9; i++) { //цикл трансформации
+				ctx2.save();
+				ctx2.translate(w*Math.random(), h*Math.random());
+				ctx2.rotate(Math.PI*Math.random());
+				var s = Math.random();
+				ctx2.scale(s, s);
+				drawCircle();
+				ctx2.restore();
+			}
+			*/
+			
+			
+		
+			function draw() {
+				ctx.clearRect(0,0,w,h);//очистим область
+				ctx.strokeRect(0,0,w,h);
+				
+				star.x += star.dx*5;
+				star.y += star.dy*5;
+				star.rotate += star.drotate*Math.PI/180;
+				/*
+				circle.x += circle.dx*5;
+				circle.y += circle.dy*5;
+				circle.rotate += circle.drotate*Math.PI/180;
+				//отрисовка кадра
+				*/
+				ctx.save();
+				ctx.translate(star.x, star.y);
+				ctx.rotate(star.rotate);
+				drawStar();
+				
+				ctx2.save();
+				ctx2.translate(circle.x, circle.y);
+				ctx2.rotate(circle.rotate);
+				drawCircle();
+				
+				ctx.restore();
+				ctx2.restore();
+				
+			}
+			
+			init();
+			
+			function keydownControl(e) {
+				if(e.keyCode == 37) {
+					star.dx = -1;
+				} 
+				if(e.keyCode == 38) {
+					star.dy = -1;
+				} 
+				if(e.keyCode == 39) {
+					star.dx = 1;
+				} 
+				if(e.keyCode == 40) {
+					star.dy = 1;
+				} 
+				if(e.keyCode == 65) {
+					star.drotate = -1;
+				} 
+				if(e.keyCode == 83) {
+					star.drotate = 1;
+				} 
+			}
+			
+			function keyupControl(e) {
+				if(e.keyCode == 37) {
+					star.dx = 0;
+				} 
+				if(e.keyCode == 38) {
+					star.dy = 0;
+				} 
+				if(e.keyCode == 39) {
+					star.dx = 0;
+				} 
+				if(e.keyCode == 40) {
+					star.dy = 0;
+				} 
+				if(e.keyCode == 65) {
+					star.drotate = 0;
+				} 
+				if(e.keyCode == 83) {
+					star.drotate = 0;
+				} 
+			}
+			window.onkeydown = keydownControl;
+			window.onkeyup = keyupControl;
+			
+			
+			
+		</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<head>
+	<title>jQuery - эффекты</title>
+	<style typee="text/css">
+	.someDiv {
+		width : 150px;
+		height: 150px;
+		display: inline-block;
+		cursor: pointer;
+	}
+	#div1 {background-color: blue;}
+	#div2 {background-color: green;}
+	#div3 {background-color: yellow;}
+	#div4 {background-color: pink;}
+	#div5 {background-color: brown;}
+	
+	#modalDiv{
+	width:400px;
+	height:400px;
+	position: absolute;
+	background-color: pink;
+	display: none;
+	cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div id="div1" class="someDiv"></div>
+	<div id="div2" class="someDiv"></div>
+	<div id="div3" class="someDiv"></div>
+	<div id="div4" class="someDiv"></div>
+	<div id="div5" class="someDiv"></div>
+	
+	<div id="modalDiv"></div> 
+	<script src = "jquery-3.2.1.js"></script>
+	<script>
+	var animTime = 2000;
+	
+		$('.someDiv').on('click', function(e){
+			var modal = $('#modalDiv');
+			modal.css('top', (window.innerHeight - modal.height())/2);
+			modal.css('left', (window.innerWidth - modal.width())/2);
+			modal.css('background-color', $(e.target).css('background-color'));
+			modal.show(animTime);
+	})
+	$('#modalDiv').on('click', function() {
+		$(this).hide(animTime);
+	});
+	</script>
+</body>
+</html>
+
+....................................................................................................
+
+<!docyment html>
+<html>
+<head>
+	<title>jQuery - анимация</title>
+	<style type="text/css">
+	
+	
+	
+	.someDiv {
+		width : 150px;
+		height: 150px;
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+		margin: 10px;
+	}
+	#div1 {background-color: blue;}
+	#div2 {background-color: green;}
+	#div3 {background-color: yellow;}
+	#div4 {background-color: pink;}
+	#div5 {background-color: brown;}
+	
+	#modalDiv{
+	width:400px;
+	height:400px;
+	position: absolute;
+	background-color: pink;
+	display: none;
+	cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div id="div1" class="someDiv"></div>
+	<div id="div2" class="someDiv"></div>
+	<div id="div3" class="someDiv"></div>
+	<div id="div4" class="someDiv"></div>
+	<div id="div5" class="someDiv"></div>
+	
+	<div id="modalDiv"></div> 
+	<script src = "jquery-3.2.1.js"></script>
+	<script>document.body.bgColor="lavender";</script>
+	<script>
+	
+	var animTime = 2000;
+	
+	var modal = $('#modalDiv');
+
+	var oldDiv = null;
+	$('.someDiv').on('click', function(e){
+		if(oldDiv) { 
+			oldDiv.css('opacity',1);
+		}
+		var jthis = $(this);
+		modal.css({ 'top':jthis.offset().top,
+					'left':jthis.offset().left,
+					'width':jthis.width(),
+					'height':jthis.height(),
+					'background-color':jthis.css('background-color'),
+					'opacity':1,
+					'display': 'block'
+					});
+		jthis.css('opacity',1);
+		n = 0;
+		
+		modal
+			.animate({'height':400, 'width':400},{
+		
+				duration:1000,
+				queue: false,
+				specialEasing: {
+					height: 'linear',
+					width: 'swing'
+				},
+				complete: function(){
+					alert("Complete");
+					},
+				step: function(){
+					console.log("Step: " + n++);
+					if(n == 100){
+						modal.stop();
+						}
+					}
+				})
+			.animate({'top':(window.innerHeight - 400) / 2,
+					  'left':(window.innerWidth - 400) / 2}, {
+						duration:1000,
+						queue: false,
+						specialEasing: {
+						height: 'linear',
+						width: 'swing'
+				}
+			})
+		
+		oldDiv = jthis;
+	})	
+			
+		//modal.css('top', (window.innerHeight - modal.height())/2);
+		//modal.css('left', (window.innerWidth - modal.width())/2);
+		//modal.css('background-color', $(e.target).css('background-color'));
+		//modal.show(animTime);
+	
+	var someModal = $('.someDiv');
+	var a = someModal.offset().top;
+	var b = someModal.offset().left;
+	
+	
+	
+	
+	$('#modalDiv').on('click', function() {
+		
+		modal.hide();
+		
+	/*
+		modal
+			.animate({'height': 150, 'width':150}, 1000)
+			.animate({'top': a ,
+					  'left':(b + 165 + 'px')}, 1000)*/
+	
+	});
+	
+	</script>
+</body>
+</html>
+
+

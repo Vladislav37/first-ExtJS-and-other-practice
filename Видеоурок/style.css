@@ -1,0 +1,127 @@
+* {
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+html { 	
+	background: url('') repeat-y #f1f442 left;	
+}
+#header { color : red}
+#header_1 { color : white}
+h3 {color:blue}
+h3.style { color: #f4418c }
+p.style { background-color: #cfcfcf }
+p i {color: orange ;}
+p.example, b {
+	font-size: 30px;
+	font-weight : normal;
+}
+p.style:hover {background-color: red;}
+#example_1:first-letter {color : red;}
+#example_1:first-line {	color : orange;}
+.href {
+	color: blue;
+	text-decoration: none;
+}
+.href:hover {
+	color: red;
+}
+h3:active {color: blue}
+.href:visited {
+	color: #cacaca;
+}
+
+	
+
+#style_1:hover {background-color: none;}
+
+
+#style_1 {
+	font-size: 1.5em;
+	font-weight: 700;
+	font-family: Comic Sans MS;
+	text-align: justify;
+	text-indent: 1.3em;
+	text-transform:lowercase;
+	word-spacing: 10px;
+	letter-spacing: 5px;
+	line-height: 50px;
+}
+
+
+#testBlock {
+		border: 10px solid silver;
+		border-bottom: 10px double red;
+		height: 20px;
+		width: 30px;
+		background-color:#f4418c;
+		float: top;
+		top:30px;
+		padding: 2px;
+		border-radius: 15px;
+}
+
+
+header {
+	width: calc(100% - 20px);
+	height: 50px;
+	background-color: #fff;
+	border-bottom: 2px solid silver;
+	border-top: 2px solid silver;
+	padding: 10px;
+	font-size:1.3em;
+	color: #f4418c;
+	font-family: Comic Sans MS;
+	float: left;
+	}
+	
+article, aside{
+	margin-top:10px;
+	background-color:#fafafa;
+	height: 400px;
+	border-radius: 5px;
+	border: 1px solid silver;
+	box-sizing: border-box;
+	float: left;
+}
+
+article {
+	width: 60%;
+	margin-left:5%;
+	margin-right: 5%;
+	
+	
+}
+
+aside {
+	width: 25%;
+	
+}
+
+footer {
+	width: calc(100% - 20px);
+	height: 50px;
+	background-color: #fff;
+	margin-top:20px;
+	border-bottom: 2px solid silver;
+	border-top: 2px solid silver;
+	padding: 10px;
+	font-size:1.3em;
+	color: #f4418c;
+	font-family: Comic Sans MS;
+	float: left;
+	}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+///////////LOFTBLOG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!///////////////////////
+
+
+(function() {
+	
+	var elems = document.getElementsByTagName("p"), //NodeList коллекция элементов<p>
+		classElems = document.getElementsByClassName("par"), //вывел элементы с классом "par"
+		idElems = document.getElementById("four"), //вывел элементы с id="four"
+		elemSelector = document.querySelector("p"), //вывел первый элемент с тегом <p>
+		elemSelectorAll = document. querySelectorAll("p"),// выводит все элементы с тегом <p> / Тег  document.getElementsByTagName работает быстрее
+		elemInDiv = document. querySelectorAll("div p"), //ищем все параграфы <p> в блоках <div>
+		idElemSelector = document. querySelectorAll("#four"); // ищет все элементы с id="four", но тег document.getElementById("four") работает быстрее
+		
+		
+		//console.log(idElemSelector);  
+		//console.log(idElems);
+		//console.log(classElems);
+	
+	//console.log(elems);
+	
+	for( var i = 0 , len = elems.length; i < len; i++) { //вывели по отдельности каждый элемент
+		//console.log( elems[i].tagName); //покажет свойство "имя тега" и сколько раз выводит
+		//console.log( elems[i].parentNode); //покажет родительские теги
+		//console.log( elems[i].previousSibling); // предыдущий родственник, пробелы тоже считаются как родственники и выводятся как #text
+		//console.log( elems[i].nextSibling);//следующий родственник, пробелы тоже считаются как родственники и выводятся как #text
+		//console.log( elems[i].nodeName); // отличие от tagName в том, что может работать еще с текстовыми узлами , а не только с узлами элементов
+		console.log( elems[i].nodeType); // выводит цифру типа элмента 1 - узел элемента, 3 - текстовый узел
+		
+	}
+	console.log(document.querySelector("div").childNodes); // выведет все дочерние узлы нашего тега <div> включая text
+	console.log(document.querySelector("div").children); // выведет только дочерние элементы
+	console.log(document.querySelector("div").lastChild); //выведет последний узел блока <div>
+	console.log(document.querySelector("div").firstChild);//выведет первый узел блока <div>
+	
+	console.log(document.querySelector("div").innerHTML);// выводит содержимое нашего жлемента в формате стринг - строки
+})();
